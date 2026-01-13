@@ -1,4 +1,4 @@
-import CalculadoraOrcamento from "@/components/CalculadoraOrcamento";
+import QuoteCalculator from "@/components/QuoteCalculator";
 import Galeria from "@/components/Galeria";
 import HeroSection from "@/components/HeroSection";
 import { client } from "@/sanityStudio/lib/client";
@@ -14,6 +14,7 @@ export interface Servico {
       _type: 'reference';
     };
   }>;
+  description?: string;
 }
 
 async function getServices(): Promise<Servico[]> {
@@ -22,6 +23,7 @@ async function getServices(): Promise<Servico[]> {
     _id,
     title,
     category,
+    description,
     images
   }`;
 
@@ -46,7 +48,7 @@ export default async function HomePage() {
           <h2 className="text-3xl font-bold text-center mb-10 text-stone-800">
             Calcule sua Estimativa e Peça um Orçamento
           </h2>
-          <CalculadoraOrcamento />
+          <QuoteCalculator />
         </div>
       </section>
       

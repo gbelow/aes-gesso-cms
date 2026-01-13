@@ -1,0 +1,77 @@
+<svg width='2400' height='1400' viewBox='0 0 2400 1400' xmlns='http://www.w3.org/2000/svg' role='img' aria-labelledby='heroTitle heroDesc'>
+  <title id='heroTitle'>A&S Gesso hero background</title>
+  <desc id='heroDesc'>Architectural composition evoking plaster, steel frames, and bespoke niches</desc>
+  <defs>
+    <linearGradient id='bg-wash' x1='0%' y1='0%' x2='100%' y2='100%'>
+      <stop offset='0%' stop-color='#f9f6f2' />
+      <stop offset='35%' stop-color='#f3eee7' />
+      <stop offset='100%' stop-color='#ebe4db' />
+    </linearGradient>
+    <radialGradient id='light-focus' cx='65%' cy='30%' r='55%'>
+      <stop offset='0%' stop-color='#ffffff' stop-opacity='0.65' />
+      <stop offset='60%' stop-color='#fff8f0' stop-opacity='0.15' />
+      <stop offset='100%' stop-color='#f3ede4' stop-opacity='0' />
+    </radialGradient>
+    <linearGradient id='accent-stroke' x1='0%' y1='0%' x2='100%' y2='0%'>
+      <stop offset='0%' stop-color='#0d9488' stop-opacity='0.65' />
+      <stop offset='100%' stop-color='#134e4a' stop-opacity='0.25' />
+    </linearGradient>
+    <linearGradient id='warm-stroke' x1='0%' y1='0%' x2='100%' y2='0%'>
+      <stop offset='0%' stop-color='#c0a186' stop-opacity='0.2' />
+      <stop offset='100%' stop-color='#a6805e' stop-opacity='0.4' />
+    </linearGradient>
+    <filter id='noise' x='-10%' y='-10%' width='120%' height='120%'>
+      <feTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' seed='12' />
+      <feColorMatrix type='saturate' values='0' />
+      <feComponentTransfer>
+        <feFuncA type='linear' slope='0.02' />
+      </feComponentTransfer>
+    </filter>
+    <mask id='soft-mask'>
+      <rect width='2400' height='1400' fill='url(#light-focus)' />
+    </mask>
+  </defs>
+
+  <rect width='2400' height='1400' fill='url(#bg-wash)' />
+  <rect width='2400' height='1400' fill='url(#light-focus)' />
+  <rect width='2400' height='1400' filter='url(#noise)' opacity='0.35' />
+
+  <g stroke='url(#warm-stroke)' stroke-width='2' stroke-linecap='round' opacity='0.55'>
+    <path d='M200 1180 C500 900 900 850 1400 620 C1800 430 2100 320 2200 200' fill='none' />
+    <path d='M0 900 C400 820 900 600 1300 400' fill='none' />
+    <path d='M300 200 C600 260 950 420 1300 250' fill='none' />
+  </g>
+
+  <g stroke='url(#accent-stroke)' stroke-width='3' fill='none' opacity='0.8'>
+    <rect x='1570' y='220' width='420' height='540' rx='40' />
+    <line x1='1570' y1='420' x2='1990' y2='420' />
+    <line x1='1780' y1='220' x2='1780' y2='760' />
+  </g>
+
+  <g stroke='#a8a29e' stroke-opacity='0.5' stroke-width='1.5' fill='none'>
+    <path d='M300 1180 h520 v-320 h420 v-280' />
+    <path d='M420 1060 h260 v-180' />
+    <path d='M980 780 h180 v-160 h260' />
+  </g>
+
+  <g mask='url(#soft-mask)' opacity='0.85'>
+    <path d='M-100 1260 C500 1080 820 840 1180 520 C1520 220 1840 80 2600 -40 V1520 H-100 Z' fill='#ffffff' fill-opacity='0.45' />
+  </g>
+
+  <g opacity='0.6' fill='none' stroke='#0f766e' stroke-width='1.5' stroke-dasharray='8 18'>
+    <circle cx='520' cy='380' r='220' />
+    <circle cx='520' cy='380' r='320' stroke-opacity='0.4' />
+    <path d='M540 140 C1040 260 1480 80 2000 180' />
+  </g>
+
+  <g opacity='0.65' fill='#0f766e'>
+    <circle cx='1860' cy='980' r='6' />
+    <circle cx='1960' cy='860' r='4' />
+    <circle cx='2040' cy='1020' r='5' />
+  </g>
+
+  <g opacity='0.35' fill='#c47b59'>
+    <circle cx='360' cy='960' r='14' />
+    <circle cx='640' cy='780' r='10' />
+  </g>
+</svg>
