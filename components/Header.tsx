@@ -1,9 +1,10 @@
 "use client"
 import { useState } from "react"
 import Link from "next/link"
-import { Menu, Phone, Hammer } from "lucide-react"
+import { Menu, Phone } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet"
+import Image from "next/image"
 
 const menuItems = [
   { label: "Início", href: "/" },
@@ -19,7 +20,14 @@ export default function Header() {
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 font-bold text-xl text-primary">
-          <Hammer className="h-6 w-6" />
+          <Image
+            src="/aes_logo.jpg" // Sua imagem de fundo aqui (coloque em `public/hero-gesso.jpg`)
+            alt="Acabamento de Gesso de Alta Qualidade"
+            width={40}
+            height={40}
+            quality={70} // Otimiza o carregamento
+            className="rounded-full" // Escurece a imagem
+          />
           <span>Gesso <span className="text-foreground/70 text-base font-normal">Profissional</span></span>
         </Link>
 

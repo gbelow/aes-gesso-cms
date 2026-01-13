@@ -27,13 +27,13 @@ const servicosSchema: ServicoDocument = {
   type: 'document',
   fields: [
     {
-      name: 'titulo',
+      name: 'title',
       title: 'Nome do Serviço',
       type: 'string',
       validation: (Rule: any) => Rule.required(),
     },
     {
-      name: 'categoria',
+      name: 'category',
       title: 'Tipo de Serviço',
       type: 'string',
       options: {
@@ -50,11 +50,17 @@ const servicosSchema: ServicoDocument = {
       },
     },
     {
-      name: 'imagens', // Mudamos para plural
+      name: 'images', // Mudamos para plural
       title: 'Galeria de Fotos',
       type: 'array',
       of: [{ type: 'image', options: { hotspot: true } }],
       validation: (Rule: any) => Rule.required().min(1),
+    },
+    {
+      name: 'description',
+      title: 'Descrição do Serviço',
+      type: 'string',
+      validation: (Rule: any) => Rule.required(),
     },
   ],
 };
