@@ -3,7 +3,7 @@ import Galeria from "@/components/Galeria";
 import HeroSection from "@/components/HeroSection";
 import { client } from "@/sanityStudio/lib/client";
 
-export interface Servico {
+export interface Service {
   _id: string;
   title: string;
   category: 'drywall' | 'modular' | 'steelFrame' | 'convencional' | 'nichos' | 'rodaTeto' | '3d' | 'boiserie';
@@ -17,7 +17,7 @@ export interface Servico {
   description?: string;
 }
 
-async function getServices(): Promise<Servico[]> {
+async function getServices(): Promise<Service[]> {
 
   const query = `*[_type == "services"] {
     _id,
@@ -32,6 +32,7 @@ async function getServices(): Promise<Servico[]> {
 
 export default async function HomePage() {
   const services = await getServices()
+  const now = new Date()
   return (
     <main>
       <HeroSection />
@@ -48,7 +49,7 @@ export default async function HomePage() {
           <h2 className="text-3xl font-bold text-center mb-10 text-stone-800">
             Calcule sua Estimativa e Peça um Orçamento
           </h2>
-          <QuoteCalculator />
+          <QuoteCalculator services={services}/>
         </div>
       </section>
       

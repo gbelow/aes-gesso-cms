@@ -6,15 +6,9 @@ import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Button } from "@/components/ui/button"
 import { Calculator, MessageCircle, Sparkles, Timer, ShieldCheck } from "lucide-react"
+import { Service } from "@/app/page"
 
-const serviceOptions = [
-  { value: 'drywall', label: 'Drywall técnico' },
-  { value: 'sanca', label: 'Sancas e rasgos' },
-  { value: 'boiserie', label: 'Boiseries e painéis' },
-  { value: '3d', label: 'Painéis 3D / ripados' },
-]
-
-export default function QuoteCalculator() {
+export default function QuoteCalculator({services}:{services: Service[]}) {
   const [m2, setM2] = useState('')
   const [servico, setServico] = useState('')
 
@@ -66,9 +60,9 @@ export default function QuoteCalculator() {
                   <SelectValue placeholder="Selecione o serviço" />
                 </SelectTrigger>
                 <SelectContent>
-                  {serviceOptions.map((option) => (
-                    <SelectItem key={option.value} value={option.label}>
-                      {option.label}
+                  {services.reduce((acc: Service[], el) => acc.filter(it => it._id == el._id).length > 0 ? acc : [...acc, el ],[]).map((option) => (
+                    <SelectItem key={option._id} value={option._id}>
+                      {option.title}
                     </SelectItem>
                   ))}
                 </SelectContent>

@@ -10,11 +10,11 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"
-import { Servico } from "@/app/page"
+import { Service } from "@/app/page"
 import { Badge } from "./ui/badge"
 import { FilterIcon, Layers3, Ruler, Sparkles } from "lucide-react"
 
-const categoryLabels: Record<Servico['category'], string> = {
+const categoryLabels: Record<Service['category'], string> = {
   drywall: "Drywall",
   modular: "Painéis Modulares",
   steelFrame: "Steel Frame",
@@ -25,14 +25,14 @@ const categoryLabels: Record<Servico['category'], string> = {
   boiserie: "Boiseries",
 }
 
-const categoryIcons: Partial<Record<Servico['category'], ReactNode>> = {
+const categoryIcons: Partial<Record<Service['category'], ReactNode>> = {
   drywall: <Layers3 className="h-4 w-4" />,
   boiserie: <Sparkles className="h-4 w-4" />,
   steelFrame: <Ruler className="h-4 w-4" />,
 }
 
-export default function Galeria({ services }: { services: Servico[] }) {
-  const [filtro, setFiltro] = useState<Servico['category'] | 'todos'>('todos')
+export default function Galeria({ services }: { services: Service[] }) {
+  const [filtro, setFiltro] = useState<Service['category'] | 'todos'>('todos')
 
   const categories = useMemo(() => {
     if (!services?.length) return []
@@ -40,7 +40,7 @@ export default function Galeria({ services }: { services: Servico[] }) {
     return ['todos', ...unique]
   }, [services])
 
-  const servicosFiltrados = useMemo(() => {
+  const filteredServices = useMemo(() => {
     if (!services?.length) return []
     if (filtro === 'todos') return services
     const filtered = services.filter((o) => o.category === filtro)
@@ -52,12 +52,12 @@ export default function Galeria({ services }: { services: Servico[] }) {
       <div className="flex flex-wrap items-center justify-center gap-3">
         {categories.map((cat) => {
           const isActive = filtro === cat
-          const label = cat === 'todos' ? 'Todos os projetos' : categoryLabels[cat as Servico['category']] || cat
-          const icon = cat === 'todos' ? <FilterIcon className="h-4 w-4" /> : categoryIcons[cat as Servico['category']] ?? null
+          const label = cat === 'todos' ? 'Todos os projetos' : categoryLabels[cat as Service['category']] || cat
+          const icon = cat === 'todos' ? <FilterIcon className="h-4 w-4" /> : categoryIcons[cat as Service['category']] ?? null
           return (
             <Button
               key={cat}
-              onClick={() => setFiltro(cat as Servico['category'] | 'todos')}
+              onClick={() => setFiltro(cat as Service['category'] | 'todos')}
               variant="ghost"
               className={`gap-2 rounded-full border px-5 py-2 text-sm uppercase tracking-[0.2em] ${
                 isActive
@@ -72,9 +72,9 @@ export default function Galeria({ services }: { services: Servico[] }) {
         })}
       </div>
 
-      {servicosFiltrados.length > 0 ? (
+      {filteredServices.length > 0 ? (
         <div className="grid gap-8 lg:grid-cols-2">
-          {servicosFiltrados.map((serv) => (
+          {filteredServices.map((serv) => (
             <ServiceCarrouselCard key={serv._id} service={serv} />
           ))}
         </div>
@@ -88,7 +88,7 @@ export default function Galeria({ services }: { services: Servico[] }) {
   )
 }
 
-export function ServiceCarrouselCard({ service }: { service: Servico }) {
+export function ServiceCarrouselCard({ service }: { service: Service }) {
   const [api, setApi] = useState<any>()
   const [current, setCurrent] = useState(0)
 
