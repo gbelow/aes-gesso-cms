@@ -14,9 +14,9 @@ import {apiVersion, dataset, projectId} from './sanityStudio/env'
 import {schema} from './sanityStudio/schemaTypes'
 
 export default defineConfig({
-  basePath: '/studio',
-  projectId,
-  dataset,
+  // basePath: '/studio',
+  projectId: projectId ?? 'y7ka5oti',
+  dataset: dataset ?? 'production',
   schema,
   plugins: [
     structureTool(),
