@@ -120,14 +120,18 @@ export function ServiceCarrouselCard({ service }: { service: Service }) {
             <CarouselItem key={img._key ?? i} className="pl-3 md:pl-4">
               <div className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl bg-stone-100">
                 <img
-                  src={urlFor(img)
-                    .width(1200) // Caps the width
-                    .format('webp') // Force WebP (smaller than JPG/PNG)
-                    .quality(75)
-                    .url()}
-                  alt={`Foto de ${service.title}`}
-                  fetchPriority="high" // Tells the browser to load this first
-                  sizes="(max-width: 768px) 100vw, 50vw"
+                  // The 'src' is the fallback
+                  src={urlFor(img).width(1200).url()} 
+                  // 'srcSet' gives the browser options
+                  srcSet={`
+                    ${urlFor(img).width(600).url()} 600w,
+                    ${urlFor(img).width(1200).url()} 1200w
+                  `}
+                  // 'sizes' tells the browser which one to pick based on CSS
+                  sizes="(max-width: 768px) 600px, 1200px"
+                  alt="Gallery item"
+                  loading="lazy"
+                  className="w-full h-auto"
                 />
               </div>
             </CarouselItem>
