@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button"
-import Image from "next/image"
 import { ArrowRight, MessageCircle } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 
@@ -8,13 +7,14 @@ export default function HeroSection() {
     <section className="relative overflow-hidden">
       <div className="section-shell">
         <div className="absolute inset-0 -z-10">
-          <Image
-            src="/aes_hero.png"
-            alt="Acabamento de Gesso de Alta Qualidade"
-            fill
-            quality={80}
-            priority
-            className="object-cover object-[60%_30%]"
+          <img 
+            src="/aes_hero.webp" 
+            alt="Hero"
+            width={1920} // Original aspect ratio width
+            height={1080} // Original aspect ratio height
+            fetchPriority="high" 
+            loading="eager" 
+            className="w-full h-auto" // Control actual display size with CSS
           />
           {/* <div className="absolute inset-0 bg-gradient-to-br from-white/90 via-white/75 to-transparent" /> */}
         </div>

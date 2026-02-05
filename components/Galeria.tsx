@@ -1,5 +1,4 @@
 'use client'
-import Image from "next/image"
 import { useEffect, useState, useMemo, type ReactNode } from "react"
 import { urlFor } from "@/sanityStudio/lib/sanity"
 import { Button } from "@/components/ui/button"
@@ -120,11 +119,14 @@ export function ServiceCarrouselCard({ service }: { service: Service }) {
           {service.images?.map((img, i) => (
             <CarouselItem key={img._key ?? i} className="pl-3 md:pl-4">
               <div className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl bg-stone-100">
-                <Image
-                  src={urlFor(img).url()}
+                <img
+                  src={urlFor(img)
+                    .width(1200) // Caps the width
+                    .format('webp') // Force WebP (smaller than JPG/PNG)
+                    .quality(75)
+                    .url()}
                   alt={`Foto de ${service.title}`}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  fetchPriority="high" // Tells the browser to load this first
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
               </div>
